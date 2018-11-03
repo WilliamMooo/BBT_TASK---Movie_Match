@@ -1,13 +1,14 @@
 <template>
   <div class="cancel">
     <div class="title">取消配对</div>
-    <div class="main"><span>你的密码是：</span><span>{{password}}</span></div>
+    <div class="main"><span>你的密码是：</span><span>{{reciveWard}}</span></div>
     <div class="main">
-      <input type="text" placeholder="收到的密码" v-model="reciveWard">
+      <input type="text" placeholder="收到的密码" v-model="password">
     </div>
     <div class="tips">如主动取消，请把你的密码告知对方</div>
     <div class="tips">如对方取消，请输入收到的密码</div>
     <div class="next" @click="handleSubmit()"></div>
+    <div>{{errMsg}}</div>
   </div>
 </template>
 
@@ -16,13 +17,23 @@ export default {
   name: 'cancel',
   data() {
     return {
-      password: 'xxxxx',
-      reciveWard: '',
+      password: '',
+      reciveWard: this.global.self.psw,
+      errMsg: '',
     };
   },
   methods: {
     handleSubmit() {
-      this.$router.push({ name: 'second' });
+      this.axios.post('api/cancel', {
+        psw: this.password,
+      }).then((response) => {
+        const data = JSON.parse(response);
+        if (data.errno === 0) {
+          this.$router.push({ name: 'second' });
+        } else {
+          this.errMsg = data.errmsg;
+        }
+      });
     },
   },
 };

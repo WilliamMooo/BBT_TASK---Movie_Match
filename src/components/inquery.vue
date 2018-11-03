@@ -11,10 +11,10 @@
     </div>
     <div class="matchImg">
       <div class="leftImg">
-        <img :src="imageL" alt="">
+        <img src="api/image/self" alt="">
       </div>
       <div class="rightImg">
-        <img :src="imageR" alt="">
+        <img src="api/image/ta" alt="">
       </div>
     </div>
     <div>
@@ -33,16 +33,46 @@ export default {
   name: 'inquery',
   data() {
     return {
-      status: 2,
-      movie: '动作片',
-      imageL: this.global.signIn.imgdata,
+      status: 0, // this.global.inqueryMsg.status
+      movie: '',
+      imageL: '',
       imageR: '',
       response: '你的爱心轨迹是',
       matched: false,
       matching: true,
     };
   },
+  mounted() {
+    this.init();
+  },
   methods: {
+    init() {
+      switch (this.global.inqueryMsg.self.movie) {
+        case 0:
+          this.movie = '动画片';
+          break;
+        case 1:
+          this.movie = '恐怖片';
+          break;
+        case 2:
+          this.movie = '科幻动作片';
+          break;
+        case 3:
+          this.movie = '爱情片';
+          break;
+        case 4:
+          this.movie = '剧情片';
+          break;
+        default:
+          break;
+      }
+      this.axios.get('api/image/self').then((response) => {
+        this.imageL = response;
+      });
+      this.axios.get('api/image/ta').then((response) => {
+        this.imageR = response;
+      });
+    },
     know() {
       this.$router.push({ name: 'know' });
     },
@@ -122,9 +152,13 @@ a {
   display: flex;
 }
 
-.leftImg, rightImg {
+.leftImg, .rightImg {
   width: 120px;
   height: 240px;
+}
+
+.rightImg {
+  transform: rotateY(180deg);
 }
 
 .leftImg {

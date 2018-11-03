@@ -7,11 +7,6 @@
     <div>
       <span>结果不对？</span><router-link to="/match/type">直接更换类型</router-link>
     </div>
-    <div class="showresult">
-      <span>//答案：</span>
-      <span v-for="answer in answerList" :key="answer.id">{{answer.id}}.{{answer.content}};</span>
-      <span>{{cartoon}}{{terrify}}{{scienceFiction}}{{romantic}}{{feature}}</span>
-    </div>
   </div>
 </template>
 
@@ -268,18 +263,23 @@ export default {
       switch (max[1]) {
         case 0:
           this.result = '动画片';
+          this.global.signIn.movie = 0;
           break;
         case 1:
           this.result = '恐怖片';
+          this.global.signIn.movie = 1;
           break;
         case 2:
           this.result = '科幻动作片';
+          this.global.signIn.movie = 2;
           break;
         case 3:
           this.result = '爱情片';
+          this.global.signIn.movie = 3;
           break;
         case 4:
           this.result = '剧情片';
+          this.global.signIn.movie = 4;
           break;
         default:
           break;

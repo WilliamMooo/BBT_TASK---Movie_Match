@@ -8,10 +8,10 @@
       <span>年龄：</span><span>{{age}}</span>
     </div>
     <div class="result">
-      <span>学校：</span><span>{{school}}</span>
+      <span>学校：</span><span>{{college}}</span>
     </div>
     <div class="result">
-      <span>学院：</span><span>{{college}}</span>
+      <span>学院：</span><span>{{school}}</span>
     </div>
     <div class="result">
       <span>年级：</span><span>{{grade}}</span>
@@ -37,13 +37,13 @@ export default {
   name: 'know',
   data() {
     return {
-      name: '',
-      age: '',
-      school: '',
-      college: '',
-      grade: '',
-      phone: '',
-      wechatNumber: '3218542324',
+      name: this.inqueryMsg.ta.name,
+      age: this.inqueryMsg.ta.age,
+      school: this.inqueryMsg.ta.school,
+      college: this.inqueryMsg.ta.college,
+      grade: this.inqueryMsg.ta.grade,
+      phone: this.inqueryMsg.ta.tel,
+      wechatNumber: this.inqueryMsg.ta.wechat,
       response: '',
     };
   },

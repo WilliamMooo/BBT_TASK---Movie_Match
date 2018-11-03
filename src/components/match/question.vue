@@ -64,9 +64,10 @@ export default {
   font-size: 1em;
   text-align: start;
 }
+
 .title {
   width: 70vw;
-  padding: 2vh 15vw 5vh 15vw;
+  padding: 0 15vw 5vh 15vw;
   display: flex;
   text-align: start;
 }

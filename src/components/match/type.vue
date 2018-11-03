@@ -24,6 +24,7 @@
       </div>
     </div>
     <div class="next" v-if="isSelect" @click="handleSubmit"></div>
+    <div>{{errMsg}}</div>
   </div>
 </template>
 
@@ -39,16 +40,33 @@ export default {
       select4: false,
       select5: false,
       picked: '',
+      errMsg: '',
     };
   },
   methods: {
     handleSubmit() {
       this.global.signIn.movie = this.picked;
-      this.$router.push({ name: 'draw' });
+      if (this.global.userStatus === 0) {
+        this.$router.push({ name: 'draw' });
+      } else if (this.global.userStatus === 2) {
+        this.axios('api/second', {
+          movie: this.global.signIn.movie,
+        }).then((response) => {
+          const data = JSON.parse(response);
+          if (data.errno === 0) {
+            this.$router.push({ name: 'success' });
+          } else {
+            this.errMsg = data.errmsg;
+          }
+        });
+      } else {
+        this.errMsg = '本次活动已结束';
+      }
     },
   },
   watch: {
     picked(value) {
+      this.global.signIn.movie = this.picked;
       if (value) {
         this.isSelect = true;
       }
@@ -141,7 +159,7 @@ label {
   background-size: contain;
   display: -webkit-inline-box;
   position: relative;
-  bottom: 0.5em;
+  bottom: 0.3em;
   z-index: 1;
 }
 

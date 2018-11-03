@@ -1,8 +1,8 @@
 <template>
   <div class="second">
     <div class="title">是否参加二次匹配？</div>
-    <div class="agree" @click="agree()"></div>
-    <div class="refuse" @click="refuse()"></div>
+    <div class="agree" @click="agree"></div>
+    <div class="refuse" @click="refuse"></div>
   </div>
 </template>
 

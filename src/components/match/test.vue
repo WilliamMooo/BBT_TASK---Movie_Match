@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import question from './question';
+const question = require('./question.vue');
 
 export default {
   components: {
