@@ -9,6 +9,18 @@
 <script>
 export default {
   name: 'App',
+  mounted() {
+    this.init();
+  },
+  methods: {
+    init() {
+      this.axios.post('https://hemc.100steps.net/2017/wechat/Home/Public/getJsApi',
+        `url=${location.href}`).then((receive) => {
+        const data = JSON.parse(receive);
+        this.global.wechat = data.appId;
+      });
+    },
+  },
 };
 </script>
 

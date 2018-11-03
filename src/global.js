@@ -1,15 +1,16 @@
 const signIn = {
-  gender: 1,
-  name: '',
-  age: 0,
-  grade: 0,
-  college: 0,
-  school: '',
-  tel: '',
-  wechat: '',
-  movie: 0,
-  points: [],
-  imgdata: '',
+  gender: null,
+  name: null,
+  age: null,
+  grade: null,
+  college: null,
+  school: null,
+  tel: null,
+  wechat: null,
+  movie: null,
+  tagender: null,
+  points: null,
+  imgdata: null,
 };
 
 const answer = {
@@ -21,7 +22,17 @@ const answer = {
   cartoon: 0,
 };
 
+const userStatus = {
+  status: 0,
+  login: false,
+  reg: false,
+};
+
+const inqueryMsg = null;
+
 export default {
   signIn,
   answer,
+  userStatus,
+  inqueryMsg,
 };

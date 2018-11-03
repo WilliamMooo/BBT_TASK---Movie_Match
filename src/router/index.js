@@ -1,9 +1,10 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import welcome from '@/components/welcome';
-import complete from '@/components/complete';
+import prevent from '@/components/prevent';
+import signIn from '@/components/signIn';
 import match from '@/components/match';
-import config from '@/components/match/config';
+import sexMatch from '@/components/match/sexMatch';
 import test from '@/components/match/test';
 import type from '@/components/match/type';
 import draw from '@/components/match/draw';
@@ -26,9 +27,14 @@ export default new Router({
       component: welcome,
     },
     {
-      path: '/complete',
-      name: 'complete',
-      component: complete,
+      path: '/signIn',
+      name: 'signIn',
+      component: signIn,
+    },
+    {
+      path: '/prevent',
+      name: 'prevent',
+      component: prevent,
     },
     {
       path: '/match',
@@ -36,8 +42,8 @@ export default new Router({
       children: [
         {
           path: '/',
-          name: 'config',
-          component: config,
+          name: 'sexMatch',
+          component: sexMatch,
         },
         {
           path: 'test',
