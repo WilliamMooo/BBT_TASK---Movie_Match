@@ -150,9 +150,11 @@ export default {
 
 <style scoped>
 .signIn {
-  height: 100vh;
+  position: absolute;
+  height: 100%;
   width: 100%;
   background: url(../assets/background3.png) no-repeat top;
+  background-attachment: fixed;
   background-size: cover;
   color: #fefdfb;
   font-family: 'Microsoft YaHei';
@@ -212,9 +214,25 @@ input, select {
   margin: 0 auto;
 }
 
-/* @media screen and (max-height: 400px) {
-  .title {
-    padding: 2.7em 0 1.35em 15vw;
+@media screen and (max-width: 425px) and (max-height: 500px) {
+  .signIn {
+    background-size: 100% 100%;
   }
-} */
+
+  .title {
+    padding: 10vh 0 5vh 15vw;
+  }
+
+  .input-item {
+    padding: 1vh 0 1vh 15vw;
+  }
+
+  .next {
+    height: 15vh;
+  }
+
+  .error, .correct {
+    height: 1vh;
+  }
+}
 </style>
