@@ -151,9 +151,9 @@ export default {
 <style scoped>
 .signIn {
   height: 100vh;
-  width: 100vw;
-  background: url(../assets/background3.png) no-repeat bottom;
-  background-size: 100% 100%;
+  width: 100%;
+  background: url(../assets/background3.png) no-repeat top;
+  background-size: cover;
   color: #fefdfb;
   font-family: 'Microsoft YaHei';
 }
@@ -162,13 +162,13 @@ export default {
   font-size: 1.7em;
   font-family: 'special';
   letter-spacing: 0.2em;
-  padding: 10vh 0 5vh 15vw;
+  padding: 16vw 0 8vw 15vw;
   width: 85vw;
   display: flex;
 }
 
 .input-item {
-  padding: 1vh 0 1vh 15vw;
+  padding: 2vw 0 2vw 15vw;
   width: 85vw;
   display: flex;
 }
@@ -189,26 +189,32 @@ input, select {
 }
 
 .error {
-  height: 1vh;
-  font-size: 1vh;
+  height: 2vw;
+  font-size: 2vw;
   color: #c53448;
   display: flex;
   padding-left: 15vw;
   position: relative;
-  bottom: 1.1vh;
+  bottom: 2vw;
 }
 
 .correct {
   opacity: 0;
-  height: 1vh;
-  font-size: 1vh;
+  height: 2vw;
+  font-size: 2vw;
 }
 
 .next {
   width: 40vw;
-  height: 15vh;
+  height: 30vw;
   background: url(../assets/signIn/next.png) no-repeat center;
   background-size: contain;
   margin: 0 auto;
 }
+
+/* @media screen and (max-height: 400px) {
+  .title {
+    padding: 2.7em 0 1.35em 15vw;
+  }
+} */
 </style>
